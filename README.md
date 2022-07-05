@@ -1,11 +1,11 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Camila Yung Alves
+- Edmar Paulino
+- Gabriella Lemos da Silva Vaz
 
-Link do Surge: www.link.com.br
+Link do Surge: <www.link.com.br>
 
 O que funciona:
 - Item 1
