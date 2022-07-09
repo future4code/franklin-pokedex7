@@ -7,12 +7,16 @@ import Typography from "@mui/material/Typography";
 import { CardContentText, CardPokemonContainer } from "./styled";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
+import { goToDetalhesPage } from "../../router/coordinator";
+import { useNavigate } from "react-router-dom";
 
 export const CardPokemon = (props) => {
   const { url, name } = props;
 
   const data = useRequestData({}, url);
   const pokeDescription = useRequestData({}, `${BASE_URL}/pokemon-species/${name}`);
+
+  const navigate = useNavigate();
 
   return (
     <CardPokemonContainer
@@ -46,7 +50,7 @@ export const CardPokemon = (props) => {
         <Button color="secundary" variant="contained" size="medium">
           adicionar
         </Button>
-        <Button size="medium" variant="contained" color="secundary">
+        <Button size="medium" variant="contained" color="secundary" onClick={() => goToDetalhesPage(navigate, name)}>
           ver detalhe
         </Button>
       </CardActions>
