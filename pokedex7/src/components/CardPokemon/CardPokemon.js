@@ -5,8 +5,15 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import { CardContentText, CardPokemonContainer } from "./styled";
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/urls";
 
 export const CardPokemon = (props) => {
+  const { url, name } = props;
+
+  const data = useRequestData({}, url);
+  const pokeDescription = useRequestData({}, `${BASE_URL}/pokemon-species/${name}`);
+
   return (
     <CardPokemonContainer
       sx={{
@@ -18,17 +25,16 @@ export const CardPokemon = (props) => {
       <CardMedia
         component="img"
         height="140"
-        image="https://assets.pokemon.com/assets/cms2/img/misc/countries/pt/country_detail_pokemon.png"
+        image={data.sprites ? data.sprites.front_default : ""}
         alt="green iguana"
         sx={{ borderRaidus: "5px" }}
       />
       <CardContentText>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography gutterBottom variant="h5" component="div" color="black">
+          {data.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {pokeDescription.flavor_text_entries && pokeDescription.flavor_text_entries[0].flavor_text}
         </Typography>
       </CardContentText>
       <CardActions
