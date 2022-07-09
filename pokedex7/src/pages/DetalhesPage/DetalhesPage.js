@@ -1,16 +1,10 @@
 import { CardMedia, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
+import { CardPokedex } from "../../components/CardPokedex/CardPokedex";
 import { BASE_URL } from "../../constants/urls";
 import useRequestData from "../../hooks/useRequestData";
-import {
-  DetalhesContainer,
-  HabilidadesContainer,
-  ImagemContainer,
-  MovimentosContainer,
-  StatusContainer,
-  TipoContainer,
-} from "./styled";
+import { DetalhesContainer } from "./styled";
 
 export const DetalhesPage = () => {
   const { id } = useParams();
@@ -18,90 +12,16 @@ export const DetalhesPage = () => {
 
   return (
     <DetalhesContainer>
-      <ImagemContainer>
-        <CardMedia
-          component="img"
-          height="200"
-          width="200"
-          image={data.sprites ? data.sprites.front_default : ""}
-          alt="green iguana"
-          sx={{ borderRaidus: "5px", backgroundColor: "white" }}
-        />
-        <CardMedia
-          component="img"
-          height="200"
-          width="200"
-          image={data.sprites ? data.sprites.back_default : ""}
-          alt="green iguana"
-          sx={{ borderRaidus: "5px" }}
-        />
-      </ImagemContainer>
-      <StatusContainer>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          color="black"
-          fontSize={"28px"}
-          textAlign={"center"}
-          margin={"5px"}
-          sx={{ backgroundColor: "white", opacity: "0.6" }}
-        >
-          Stats
-        </Typography>
-        {data.stats &&
-          data.stats.map((stat) => {
-            return (
-              <Typography
-                key={`${data.name}-${stat.stat.name}`}
-                gutterBottom
-                variant="p"
-                component="div"
-                color="black"
-                fontSize={"28px"}
-                textAlign={"center"}
-                margin={"5px"}
-                sx={{ backgroundColor: "white", opacity: "0.6" }}
-              >
-                {stat.stat.name}: {stat.base_stat}
-              </Typography>
-            );
-          })}
-      </StatusContainer>
-      <HabilidadesContainer>
-        <TipoContainer>
-          {data.types &&
-            data.types.map((type) => {
-              return (
-                <Typography
-                  key={`${data.name}-${type.type.name}`}
-                  gutterBottom
-                  variant="p"
-                  component="div"
-                  color="black"
-                >
-                  {type.type.name}
-                </Typography>
-              );
-            })}
-        </TipoContainer>
-        <MovimentosContainer>
-          {data.moves &&
-            data.moves.slice(0, 5).map((move) => {
-              return (
-                <Typography
-                  key={`${data.name}-${move.move.name}`}
-                  gutterBottom
-                  variant="p"
-                  component="div"
-                  color="black"
-                >
-                  {move.move.name}
-                </Typography>
-              );
-            })}
-        </MovimentosContainer>
-      </HabilidadesContainer>
-    </DetalhesContainer>
+      {data.name && <CardPokedex
+        name={id}
+        imageFront={data.sprites.front_default}
+        imageBack={data.sprites.back_default}
+        stats={data.stats.map((stat) => {
+          return { name: stat.stat.name, baseStat: stat.base_stat }
+        })}
+        types={data.types.map((type) => type.type.name)}
+        moves={data.moves.slice(0, 5).map((move) => move.move.name)}
+      />}
+    </DetalhesContainer>     
   );
 };
