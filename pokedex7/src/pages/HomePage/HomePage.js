@@ -6,16 +6,20 @@ import useRequestData from "../../hooks/useRequestData";
 import { ConstainerHome } from "./styled";
 
 export const HomePage = () => {
-  const data = useRequestData({}, `${BASE_URL}/pokemon/`)
+  const data = useRequestData({}, `${BASE_URL}/pokemon/`);
   return (
     <>
-      Home
       <ConstainerHome>
-        {data.results && data.results.map((pokemon) => {
-          return (
-            <CardPokemon key={pokemon.name} url={pokemon.url} name={pokemon.name} />
-          )
-        })}
+        {data.results &&
+          data.results.map((pokemon) => {
+            return (
+              <CardPokemon
+                key={pokemon.name}
+                url={pokemon.url}
+                name={pokemon.name}
+              />
+            );
+          })}
       </ConstainerHome>
     </>
   );

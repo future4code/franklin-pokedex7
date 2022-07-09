@@ -3,11 +3,18 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import useRequestData from "../../hooks/useRequestData";
-import { DetalhesContainer, HabilidadesContainer, ImagemContainer, MovimentosContainer, StatusContainer, TipoContainer } from "./styled";
+import {
+  DetalhesContainer,
+  HabilidadesContainer,
+  ImagemContainer,
+  MovimentosContainer,
+  StatusContainer,
+  TipoContainer,
+} from "./styled";
 
 export const DetalhesPage = () => {
   const { id } = useParams();
-  const data = useRequestData({}, `${BASE_URL}/pokemon/${id}`)
+  const data = useRequestData({}, `${BASE_URL}/pokemon/${id}`);
 
   return (
     <DetalhesContainer>
@@ -18,7 +25,7 @@ export const DetalhesPage = () => {
           width="200"
           image={data.sprites ? data.sprites.front_default : ""}
           alt="green iguana"
-          sx={{ borderRaidus: "5px" }}
+          sx={{ borderRaidus: "5px", backgroundColor: "white" }}
         />
         <CardMedia
           component="img"
@@ -30,35 +37,69 @@ export const DetalhesPage = () => {
         />
       </ImagemContainer>
       <StatusContainer>
-        <Typography gutterBottom variant="h5" component="div" color="black">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          color="black"
+          fontSize={"28px"}
+          textAlign={"center"}
+          margin={"5px"}
+          sx={{ backgroundColor: "white", opacity: "0.6" }}
+        >
           Stats
         </Typography>
-        {data.stats && data.stats.map((stat) => {
-          return (
-            <Typography key={`${data.name}-${stat.stat.name}`} gutterBottom variant="p" component="div" color="black">
-              {stat.stat.name}: {stat.base_stat}
-            </Typography>
-          )
-        })}
+        {data.stats &&
+          data.stats.map((stat) => {
+            return (
+              <Typography
+                key={`${data.name}-${stat.stat.name}`}
+                gutterBottom
+                variant="p"
+                component="div"
+                color="black"
+                fontSize={"28px"}
+                textAlign={"center"}
+                margin={"5px"}
+                sx={{ backgroundColor: "white", opacity: "0.6" }}
+              >
+                {stat.stat.name}: {stat.base_stat}
+              </Typography>
+            );
+          })}
       </StatusContainer>
       <HabilidadesContainer>
         <TipoContainer>
-          {data.types && data.types.map((type) => {
-            return (
-              <Typography key={`${data.name}-${type.type.name}`} gutterBottom variant="p" component="div" color="black">
-                {type.type.name}
-              </Typography>
-            )
-          })}
+          {data.types &&
+            data.types.map((type) => {
+              return (
+                <Typography
+                  key={`${data.name}-${type.type.name}`}
+                  gutterBottom
+                  variant="p"
+                  component="div"
+                  color="black"
+                >
+                  {type.type.name}
+                </Typography>
+              );
+            })}
         </TipoContainer>
         <MovimentosContainer>
-          {data.moves && data.moves.slice(0, 5).map((move) => {
-            return (
-              <Typography key={`${data.name}-${move.move.name}`} gutterBottom variant="p" component="div" color="black">
-                {move.move.name}
-              </Typography>
-            )
-          })}
+          {data.moves &&
+            data.moves.slice(0, 5).map((move) => {
+              return (
+                <Typography
+                  key={`${data.name}-${move.move.name}`}
+                  gutterBottom
+                  variant="p"
+                  component="div"
+                  color="black"
+                >
+                  {move.move.name}
+                </Typography>
+              );
+            })}
         </MovimentosContainer>
       </HabilidadesContainer>
     </DetalhesContainer>
