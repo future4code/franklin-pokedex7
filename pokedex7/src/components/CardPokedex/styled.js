@@ -22,6 +22,13 @@ export const ConstainerControl = styled.div`
   margin: auto;
 `;
 
+export const RadioButton = styled.div``
+
+export const PlusButton= styled.div``;
+
+export const  = styled.div``;
+
+
 export const ContainerCondicional = styled.div`
   margin: 30px;
   height: 300px;
