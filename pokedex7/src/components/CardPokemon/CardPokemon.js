@@ -7,14 +7,17 @@ import Typography from "@mui/material/Typography";
 import { CardContentText, CardPokemonContainer } from "./styled";
 import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
-import { goToDetalhesPage } from "../../router/coordinator";
+import { goToDetalhesPage, goToPokedexPage } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 
 export const CardPokemon = (props) => {
   const { url, name } = props;
 
   const data = useRequestData({}, url);
-  const pokeDescription = useRequestData({}, `${BASE_URL}/pokemon-species/${name}`);
+  const pokeDescription = useRequestData(
+    {},
+    `${BASE_URL}/pokemon-species/${name}`
+  );
 
   const navigate = useNavigate();
 
@@ -38,7 +41,8 @@ export const CardPokemon = (props) => {
           {data.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {pokeDescription.flavor_text_entries && pokeDescription.flavor_text_entries[0].flavor_text}
+          {pokeDescription.flavor_text_entries &&
+            pokeDescription.flavor_text_entries[0].flavor_text}
         </Typography>
       </CardContentText>
       <CardActions
@@ -47,10 +51,20 @@ export const CardPokemon = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <Button color="secundary" variant="contained" size="medium">
+        <Button
+          onClick={() => goToPokedexPage(navigate)}
+          color="secundary"
+          variant="contained"
+          size="medium"
+        >
           adicionar
         </Button>
-        <Button size="medium" variant="contained" color="secundary" onClick={() => goToDetalhesPage(navigate, name)}>
+        <Button
+          size="medium"
+          variant="contained"
+          color="secundary"
+          onClick={() => goToDetalhesPage(navigate, name)}
+        >
           ver detalhe
         </Button>
       </CardActions>

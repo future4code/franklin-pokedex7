@@ -7,6 +7,7 @@ export const ContainerPokedex = styled.div`
   border-radius: 8px;
   width: 500px;
   height: 600px;
+  box-shadow: 10px 10px;
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -14,25 +15,34 @@ export const ContainerPokedex = styled.div`
 
 export const ConstainerControl = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 200px;
+  max-width: 400px;
   justify-items: center;
+  margin: auto;
+  row-gap: 30px;
+`;
+
+export const ContainerButton01 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const RadioButton = styled.div`
+  transform: rotate(-10deg);
+`;
+
+export const PlusButton = styled.div``;
+
+export const OvalButton = styled.div`
   margin: auto;
 `;
 
-export const RadioButton = styled.div``
-
-export const PlusButton= styled.div``;
-
-export const  = styled.div``;
-
-
 export const ContainerCondicional = styled.div`
+  border: 10px solid;
   margin: 30px;
   height: 300px;
-  /* object-fit: cover; */
   background-color: #54661a;
   padding: 10px;
   border-radius: 5px;
