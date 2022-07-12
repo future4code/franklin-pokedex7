@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
@@ -9,9 +9,11 @@ import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import { goToDetalhesPage, goToPokedexPage } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
+import { ContextPokedex } from "../../contexts/ContextPokedex";
 
 export const CardPokemon = (props) => {
   const { url, name } = props;
+  const { pokedex, setPokedex } = useContext(ContextPokedex)
 
   const data = useRequestData({}, url);
   const pokeDescription = useRequestData(
@@ -51,14 +53,23 @@ export const CardPokemon = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <Button
-          onClick={() => goToPokedexPage(navigate)}
+        {pokedex.indexOf(name) === -1 ? <Button
+          onClick={() => setPokedex([...pokedex, name])}
           color="secundary"
           variant="contained"
           size="medium"
         >
           adicionar
         </Button>
+        :
+        <Button
+          onClick={() => setPokedex(pokedex.filter((pokemon) => pokemon !== name))}
+          color="secundary"
+          variant="contained"
+          size="medium"
+        >
+          remover
+        </Button>}
         <Button
           size="medium"
           variant="contained"

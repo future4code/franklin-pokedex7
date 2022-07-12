@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DetalhesPage } from "../pages/DetalhesPage/DetalhesPage";
 import { HomePage } from "../pages/HomePage/HomePage";

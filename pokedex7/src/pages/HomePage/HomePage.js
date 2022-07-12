@@ -3,13 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { CardPokemon } from "../../components/CardPokemon/CardPokemon";
 import { BASE_URL } from "../../constants/urls";
 import useRequestData from "../../hooks/useRequestData";
-import { ConstainerHome } from "./styled";
+import { ContainerHome } from "./styled";
+import { goToPokedexPage } from "../../router/coordinator";
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const data = useRequestData({}, `${BASE_URL}/pokemon/`);
+  const navigate = useNavigate();
+
   return (
     <>
-      <ConstainerHome>
+      <ContainerHome>
+        <button onClick={() => goToPokedexPage(navigate)}>Pokedex</button>
         {data.results &&
           data.results.map((pokemon) => {
             return (
@@ -20,7 +24,7 @@ export const HomePage = () => {
               />
             );
           })}
-      </ConstainerHome>
+      </ContainerHome>
     </>
   );
 };
