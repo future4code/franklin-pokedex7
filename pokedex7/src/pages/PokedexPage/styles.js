@@ -11,3 +11,5 @@ export const ContainerPokedex = styled.div`
   flex-direction: row;
   justify-content: space-around;
 `;
+
+

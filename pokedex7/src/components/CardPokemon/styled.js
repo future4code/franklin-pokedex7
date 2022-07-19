@@ -13,7 +13,7 @@ export const CardPokemonContainer = styled(Card)`
 
 export const CardContentText = styled(CardContent)`
   border-radius: 3px;
-  margin-top: 5px;
+  margin: 5px 0 0 0;
   background-color: white;
   opacity: 0.6;
 `;

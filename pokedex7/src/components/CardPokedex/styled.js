@@ -1,4 +1,5 @@
 import { CardMedia } from "@mui/material";
+import gameboy from "../../assets/gameboy.png";
 import styled from "styled-components";
 
 export const ContainerPokedex = styled.div`
@@ -59,3 +60,12 @@ export const PokedexText = styled.p`
   @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
   font-family: "Press Start 2P", cursive;
 `;
+
+export const StyledImage = styled.img`
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+`

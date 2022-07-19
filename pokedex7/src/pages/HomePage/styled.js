@@ -5,4 +5,5 @@ export const ContainerHome = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+  margin: 100px 0 0 0;
 `;

@@ -50,11 +50,5 @@ export const MovimentosContainer = styled.div`
   background-image: url(https://guikao.files.wordpress.com/2012/01/pokemon_wallpaper01_1680.jpg);
 `;
 
-export const StyledImage = styled.img`
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-`
+
+

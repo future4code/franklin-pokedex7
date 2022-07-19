@@ -8,7 +8,6 @@ import { DetalhesContainer, StyledImage } from "./styled";
 import Headers from "../../components/CardHeader/Headers";
 import cabeca from "../../assets/pikachu2.png";
 import rabo from "../../assets/RaboPikachu2.png";
-import gameboy from "../../assets/gameboy.png";
 import { goToHomePage, goToPokedexPage } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +36,7 @@ export const DetalhesPage = () => {
 
       />
 
-      {/* <StyledImage src={gameboy} /> */}
+      
 
       <DetalhesContainer>
         {data.name && <CardPokedex
